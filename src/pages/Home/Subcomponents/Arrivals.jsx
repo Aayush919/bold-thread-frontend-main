@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { urls } from '../../../config/urls';
 
 
 function Arrivals() {
@@ -16,7 +17,7 @@ function Arrivals() {
             // setLoading(true);
             try {
                 // Tumhare backend ke API endpoint ko call karo
-                const response = await axios.get(`http://localhost:3000/api/v1/product/tags/Trending`);
+                const response = await axios.get(`${urls}/product/tags/Trending`);
                 console.log(response.data)
                 // console.log(response.data.data.data[0].variants[0].images[0], 'ye h bro.')
                 setProducts(response && response.data.data.data)
@@ -60,7 +61,7 @@ function Arrivals() {
                                 alt={category.title || 'Product image'} // Added fallback alt text
                                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                             /> */}
-                            <img src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`} alt='/Images/watch.png' loading="lazy" />
+                            <img src={`${urls}/document/variants[0][images][0]-1733507307529-141666883.jpg`} alt='/Images/watch.png' loading="lazy" />
                         </div>
 
                         {/* Display title below the image */}

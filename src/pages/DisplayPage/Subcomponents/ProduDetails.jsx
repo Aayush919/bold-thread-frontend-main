@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios"
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { urls } from "../../../config/urls";
 
 export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState('');
@@ -27,7 +28,7 @@ export default function ProductDetails() {
 
       try {
         // Tumhare backend ke API endpoint ko call karo
-        const response = await axios.get(`http://localhost:3000/api/v1/product/product/${productId}`);
+        const response = await axios.get(`${urls}/product/product/${productId}`);
         console.log(response.data.data.data.variants)
         setProduct(response.data.data.data)
         setVariant(response.data.data.data.variants)
@@ -64,7 +65,7 @@ export default function ProductDetails() {
               <img
                 key={index}
                 className="w-full h-full mt-3 cursor-pointer"
-                src={`http://localhost:3000/api/document/${imgSrc}`}
+                src={`${urls}/document/${imgSrc}`}
               // alt={`${.name} ${index}`}
               // onClick={() => handleImageClick(imgSrc)}
 
@@ -82,7 +83,7 @@ export default function ProductDetails() {
           // }}
           >
             <img
-              src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`}
+              src={`${urls}/document/variants[0][images][0]-1733507307529-141666883.jpg`}
               // alt={item.name}
               className="w-full h-full opacity-1" // Hide original image but keep for structure
             />

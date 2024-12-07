@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import png from "../../../assets/npg tshirt.png"
 import axios from 'axios'
+import { urls } from "../../../config/urls";
 
 
 function LatestColletion() {
@@ -18,7 +19,7 @@ function LatestColletion() {
             // setLoading(true);
             try {
                 // Tumhare backend ke API endpoint ko call karo
-                const response = await axios.get(`http://localhost:3000/api/v1/product/category/upperwear`);
+                const response = await axios.get(`${urls}/product/category/upperwear`);
                 // console.log(response.data.data.data[0].variants[0].images[0], 'ye h bro.')
                 console.log(response.data.data)
                 setProducts(response && response.data.data.data)
@@ -57,7 +58,7 @@ function LatestColletion() {
                         className='relative xl:w-80 w-48 overflow-hidden xl:h-96 h-80 bg-gray-100 hover:bg-gray-300 pb-10 cursor-pointer m-10'
                     >
                         <div className="xl:h-72 line-clamp-2">
-                            <img src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`} alt='/Images/watch.png' loading="lazy" />
+                            <img src={`${urls}/document/variants[0][images][0]-1733507307529-141666883.jpg`} alt='/Images/watch.png' loading="lazy" />
 
 
                         </div>

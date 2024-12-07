@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { CiStar } from "react-icons/ci";
 import { FaChevronDown } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { urls } from "../../config/urls";
 // import Footer from '../components/Footer';
 
 // const newArrivalsData = {
@@ -97,14 +98,14 @@ export default function NewArrival() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
-//   const sortedAndFilteredProducts = [products]
-//     .filter((product) => filter === "all" || product.category === filter)
-//     .sort((a, b) => {
-//       if (sortBy === "price-low-high") return a.price - b.price;
-//       if (sortBy === "price-high-low") return b.price - a.price;
-//       if (sortBy === "rating") return b.rating - a.rating;
-//       return 0;
-//     });
+  //   const sortedAndFilteredProducts = [products]
+  //     .filter((product) => filter === "all" || product.category === filter)
+  //     .sort((a, b) => {
+  //       if (sortBy === "price-low-high") return a.price - b.price;
+  //       if (sortBy === "price-high-low") return b.price - a.price;
+  //       if (sortBy === "rating") return b.rating - a.rating;
+  //       return 0;
+  //     });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -112,7 +113,7 @@ export default function NewArrival() {
       try {
         // Tumhare backend ke API endpoint ko call karo
         const response = await axios.get(
-          `http://localhost:3000/api/v1/product/tags/newarrivals`
+          `${urls}/product/tags/newarrivals`
         );
         console.log(response.data);
         // console.log(response.data.data.data[0].variants[0].images[0], 'ye h bro.')
@@ -174,7 +175,7 @@ export default function NewArrival() {
             >
               <img
                 //   src={product.image}
-                src={`http://localhost:3000/api/document/variants[0][images][0]-1733337349673-432827363.jpg`}
+                src={`${urls}/document/variants[0][images][0]-1733337349673-432827363.jpg`}
                 alt={product.name}
                 className="w-full sm:w-1/2 md:w-full lg:w-1/2 xl:w-full h-32 sm:h-40 md:h-48 lg:h-40 xl:h-64 object-cover"
               />
@@ -196,7 +197,7 @@ export default function NewArrival() {
                 <div className="flex justify-between space-x-4">
                   <button
                     className="w-1/2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 sm:py-2 px-2 sm:px-4 rounded transition duration-300"
-                    // onClick={() => addToCart(product)}
+                  // onClick={() => addToCart(product)}
                   >
                     Add to Cart
                   </button>
