@@ -66,11 +66,11 @@ export default function Navbar() {
 
               <Link to="/" className="hover:text-blue-500 " onClick={() => setIsMenuOpen(false)}>Home</Link>
               <Link to="/new-arrivals" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)} >New Arrivals</Link>
-              <Link to="/trending" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)} >Trending</Link>
+              {/* <Link to="/trending" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)} >Trending</Link>
               <Link to="/customized" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)} >Customized</Link>
               <Link to="/upper-wear" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)} >Upper Wear</Link>
               <Link to="/bottom-wear" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Bottom Wear</Link>
-              <Link to="/seasonals" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Seasonals</Link>
+              <Link to="/seasonals" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Seasonals</Link> */}
 
             </div>
           </div>

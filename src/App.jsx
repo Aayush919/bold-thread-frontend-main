@@ -9,8 +9,8 @@ const App = () => {
 
 
       <Routing />
-      <Footer/>
-      </div>
+      <Footer />
+    </div>
   )
 }
 
