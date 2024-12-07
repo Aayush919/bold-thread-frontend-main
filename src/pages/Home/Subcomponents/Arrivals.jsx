@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import png from "../../../assets/npg tshirt.png"
+
 
 function Arrivals() {
     const [products, setProducts] = useState([])
@@ -17,7 +17,8 @@ function Arrivals() {
             try {
                 // Tumhare backend ke API endpoint ko call karo
                 const response = await axios.get(`http://localhost:3000/api/v1/product/tags/Trending`);
-                console.log(response.data.data.data[0].variants[0].images[0], 'ye h bro.')
+                console.log(response.data)
+                // console.log(response.data.data.data[0].variants[0].images[0], 'ye h bro.')
                 setProducts(response && response.data.data.data)
                 // setProducts(response.data.data); // Response mein data access karo
             } catch (err) {
@@ -50,6 +51,7 @@ function Arrivals() {
                     <div
                         key={index}
                         //   onClick={() => hendlepage(category.id)}
+                        onClick={() => navigate(`/display/${category._id}`)}
                         className='relative xl:w-80 w-48 overflow-hidden xl:h-96 h-72 bg-gray-100 hover:bg-gray-300 cursor-pointer'
                     >
                         <div className="xl:h-72 ">
@@ -58,7 +60,7 @@ function Arrivals() {
                                 alt={category.title || 'Product image'} // Added fallback alt text
                                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                             /> */}
-                            <img src={`http://localhost:3000/api/document/variants[0][images][0]-1733335484260-405570686.jpg`} alt='/Images/watch.png' loading="lazy" />
+                            <img src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`} alt='/Images/watch.png' loading="lazy" />
                         </div>
 
                         {/* Display title below the image */}

@@ -13,7 +13,7 @@ export default function Footer() {
   const navigate = useNavigate();
 
   return (
-    <footer className="w-full bg-black text-white pr-3">
+    <footer className="w-full bg-black text-white pr-3 mt-4">
       <div className="container mx-auto px-4ts py-8 md:py-10">
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">

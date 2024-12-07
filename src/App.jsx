@@ -1,5 +1,6 @@
 import Routing from "./utills/Routes/Routing"
 import './index.css'
+import Footer from './commoncomponents/Footer'
 
 
 const App = () => {
@@ -7,7 +8,9 @@ const App = () => {
     <div>
 
 
-      <Routing /></div>
+      <Routing />
+      <Footer/>
+      </div>
   )
 }
 
