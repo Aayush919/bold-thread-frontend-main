@@ -32,3 +32,5 @@ inr icons react icons
 //sutrday work --slider banner navbar fix logo profile remove to mobile
 //store page
 //upper wear --filter
+
+/home/ubuntu/bold-thread-frontend-main
