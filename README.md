@@ -33,4 +33,8 @@ inr icons react icons
 //store page
 //upper wear --filter
 
-/home/ubuntu/bold-thread-frontend-main
+
+ location / {
+       /home/ubuntu/bold-thread-frontend-main/dist 
+        try_files $uri /index.html;  # React ya SPA routing ke liye handle karega
+    }

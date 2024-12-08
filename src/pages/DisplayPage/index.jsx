@@ -4,8 +4,9 @@ import ProductDetails from "./Subcomponents/ProduDetails"
 const DisplayPage = () => {
   return (
     <div>
-<ProductDetails/>
 
+
+      <ProductDetails />
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import Crouser from "./Subcomponents/Crouser";
 import ProductCrouser from "./Subcomponents/ProductCrouser";
-import LatestColletion from "./Subcomponents/LatestColletion";
-import Arrivals from "./Subcomponents/Arrivals";
 import AnimatedVideo from "./Subcomponents/AnimatedVideo";
+import Trending from "./Subcomponents/Trending";
+import NewArrivals from "./Subcomponents/NewArrivals";
 
 
 
@@ -10,9 +10,10 @@ const Home = () => {
     return <>
         <Crouser />
         <ProductCrouser />
-        <LatestColletion />
+        <NewArrivals />
         <AnimatedVideo />
-        <Arrivals />
+        <Trending />
+
     </>
 
 };

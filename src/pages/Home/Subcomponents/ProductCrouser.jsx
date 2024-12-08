@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import seasonal from "../../../assets/cards/sweatshirt.png"
-import clothing from "../../../assets/cards/many t shirts.png"
+import clothing from "../../../assets/cards/manytshirt.png"
 
 function ProductCrouser() {
     const navigate = useNavigate()
