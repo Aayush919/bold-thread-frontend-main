@@ -61,7 +61,7 @@ export default function Navbar() {
           </div>
 
           {/* Icons (Cart, Profile, Search) */}
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2 mb-2">
             {/* Search Icon */}
             <div className="relative transition-all duration-500 ease-in-out max-w-xs opacity-100">
               <IoIosSearch className="absolute right-2 top-1/2 text-xl" />

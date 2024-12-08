@@ -30,8 +30,10 @@ function Trending() {
                 className="mb-16 grid gap-3 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 px-2"
             >
                 {products && products.length > 0 && products.map((category, index) => (
-                    <div key={index} className='cursor-pointer flex-shrink-0 snap-center w-full max-w-sm mx-auto rounded-md overflow-hidden h-[50vh] sm:h-[50vh] md:h-[50vh] lg:h-[60vh] bg-white shadow-md'>
-                        <img src={`${urls}/document/variants[0][images][0]-1733507307529-141666883.jpg`} alt="" className='w-full h-52 object-cover' />
+                    <div
+                        key={index}
+                        className="cursor-pointer flex-shrink-0 snap-center w-full max-w-sm mx-auto rounded-md overflow-hidden h-[335px] sm:h-[320px] md:h-[400px] lg:h-[500px] bg-white shadow-md"
+                    >                        <img src={`${urls}/document/variants[0][images][0]-1733507307529-141666883.jpg`} alt="" className='w-full h-52 object-cover' />
                         <div className='flex justify-between items-center px-3 mt-3'>
                             <h2 className='font-semibold text-lg truncate max-w-[75%]'>{category.name}</h2>
                             <h2 className='border-2 px-3 p-1 rounded-md border-black flex items-center justify-center '>
