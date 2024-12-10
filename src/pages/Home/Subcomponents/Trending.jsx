@@ -22,6 +22,7 @@ function Trending() {
 
         fetchProducts();
     }, []);
+    console.log(products)
 
     return (
         <div>
@@ -41,7 +42,7 @@ function Trending() {
                                 {category.price}</h2>
                         </div>
                         <p className='text-xs px-3 mt-2 text-gray-600 truncate max-w-[75%]'>{category.description}</p>
-                        <button className='text-white ml-3 text-xs rounded-md p-2 mt-4 bg-black' onClick={() => navigate(`/display/${category._id}`)}>
+                        <button className='text-white ml-3 text-xs rounded-md p-2 mt-4 bg-black' onClick={() => navigate(`/display/${category._id}`,{state:{variantId:category?.variantId}} )}>
                             Order Now
                         </button>
                     </div>
