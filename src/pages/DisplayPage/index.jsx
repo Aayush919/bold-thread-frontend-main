@@ -1,4 +1,5 @@
-import ProductDetails from "./Subcomponents/ProduDetails"
+import ProductSlider from "./Subcomponents/ProductSlider"
+
 
 
 const DisplayPage = () => {
@@ -6,7 +7,7 @@ const DisplayPage = () => {
     <div>
 
 
-      <ProductDetails />
+      <ProductSlider />
     </div>
   )
 }
