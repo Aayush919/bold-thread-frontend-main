@@ -56,6 +56,12 @@ export default function Navbar() {
 
               <Link to="/" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Home</Link>
               <Link to="/new-arrivals" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>New Arrivals</Link>
+              <Link to="/trending" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Trending</Link>
+              <Link to="/Customized" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Customized</Link>
+              <Link to="/upper-wear" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Upper Wear</Link>
+              <Link to="/bottom-wear" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}> Bottom Wear</Link>
+              <Link to="/store" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}> Store</Link>
+            
               {/* Add more links here as needed */}
             </div>
           </div>

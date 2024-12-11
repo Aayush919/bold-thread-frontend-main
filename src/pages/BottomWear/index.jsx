@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { urls } from "../../config/urls";
 import { FaRupeeSign } from "react-icons/fa";
 
-export default function NewArrival() {
+export default function BottomWear() {
   const [sortBy, setSortBy] = useState("newest");
   const [filter, setFilter] = useState("all");
 
@@ -47,7 +47,7 @@ export default function NewArrival() {
   return (
     <div className="xl:ml-0 ml-[-32px] p-10  xl:p-0">
       <div className="py-8 ">
-        <h1 className="text-3xl font-bold mb-8 text-center">New Arrivals</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center">Bottom Wear</h1>
 
         <div className="flex flex-col md:flex-row justify-between mb-6">
           <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 ml-3">

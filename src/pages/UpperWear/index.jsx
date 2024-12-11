@@ -1,17 +1,18 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-// import { CiStar } from "react-icons/ci";
-import { FaChevronDown } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
-import { urls } from "../../config/urls";
-import { FaRupeeSign } from "react-icons/fa";
 
-export default function NewArrival() {
-  const [sortBy, setSortBy] = useState("newest");
-  const [filter, setFilter] = useState("all");
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { urls } from '../../config/urls';
+import { FaRupeeSign } from 'react-icons/fa';
+
+export default function UpperWear() {
+   let navigate = useNavigate()
+
+
 
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
+
 
   //   const sortedAndFilteredProducts = [products]
   //     .filter((product) => filter === "all" || product.category === filter)
@@ -44,43 +45,18 @@ export default function NewArrival() {
     fetchProducts();
   }, []);
 
+
+  console.log('re-render')
   return (
-    <div className="xl:ml-0 ml-[-32px] p-10  xl:p-0">
-      <div className="py-8 ">
-        <h1 className="text-3xl font-bold mb-8 text-center">New Arrivals</h1>
+    <div className='xl:ml-0 ml-[-32px] p-10 xl:p-0'>
+    <div data-aos="zoom-in" className='flex justify-center align-middle gap-14 w-full bg-transparent font-semibold  xl:p-5'>
+     <Link to={"/Tshirt"} >TShirt</Link>
+     <Link to={"/Shirt"}>Shirt</Link>
+     <Link to={"/Hoodie"}>Hoodie</Link>
+     <Link to={"/Sweatshirt"}>Sweatshirt</Link>
+      </div>
 
-        <div className="flex flex-col md:flex-row justify-between mb-6">
-          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 ml-3">
-            <div className="flex items-center">
-              <FaChevronDown className="mr-2" />
-              <span className="mr-2">Sort by:</span>
-              <select
-                className="p-2 border rounded"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-              >
-                <option value="newest">Newest</option>
-                <option value="price-low-high">Price: Low to High</option>
-                <option value="price-high-low">Price: High to Low</option>
-                <option value="rating">Top Rated</option>
-              </select>
-            </div>
-            <div className="flex items-center">
-              <span className="mr-2">Filter:</span>
-              <select
-                className="p-2 border rounded"
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-              >
-                <option value="all">All Products</option>
-                <option value="jeans">Jeans</option>
-                <option value="tshirt">T-Shirts</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div
+      <div
                 className="mb-16 grid gap-3 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mt-10 px-2"
             >
                 {products && products.length > 0 && products.map((category, index) => (
@@ -102,8 +78,7 @@ export default function NewArrival() {
                     </div>
                 ))}
             </div>
-      </div>
-
+  
     </div>
-  );
+  )
 }

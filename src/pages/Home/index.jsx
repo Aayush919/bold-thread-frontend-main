@@ -3,6 +3,7 @@ import ProductCrouser from "./Subcomponents/ProductCrouser";
 import AnimatedVideo from "./Subcomponents/AnimatedVideo";
 import Trending from "./Subcomponents/Trending";
 import NewArrivals from "./Subcomponents/NewArrivals";
+import OldProduct from "./Subcomponents/OldProduct";
 
 
 
@@ -13,6 +14,7 @@ const Home = () => {
         <NewArrivals />
         <AnimatedVideo />
         <Trending />
+        <OldProduct/>
 
     </>
 

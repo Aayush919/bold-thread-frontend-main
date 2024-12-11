@@ -2,11 +2,20 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Ensures Tailwind scans all relevant files
+    "./src/**/*.{js,ts,jsx,tsx}", 
   ],
   theme: {
-    extend: {}, // Add custom styles here if needed
+    extend: {
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 15s linear infinite',
+      },
+    },
   },
-  plugins: [], // Add plugins like forms or typography if required
+  plugins: [],
 };
-

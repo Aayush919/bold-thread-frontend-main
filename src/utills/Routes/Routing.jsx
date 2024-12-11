@@ -5,6 +5,11 @@ import DisplayPage from "../../pages/DisplayPage";
 import Checkout from "../../pages/Checkout";
 
 import ComingSoon from "../../pages/ComingSoon";
+import NewArrival from "../../pages/NewArrival";
+import Trending from "../../pages/Trending";
+import UpperWear from "../../pages/UpperWear";
+import BottomWear from "../../pages/BottomWear";
+import UserProfile from "../../pages/UserProfile";
 
 function Routing() {
     return (
@@ -15,7 +20,12 @@ function Routing() {
                 <Route index element={<Home />} />
                 <Route path='/display/:productId/' element={<DisplayPage />} />
                 <Route path='/checkout/:productid/:variantId' element={<Checkout />} />
-                {/* <Route path='/new-arrivals' element={<NewArrival />} /> */}
+                <Route path='/new-arrivals' element={<NewArrival />} />
+                <Route path='/trending' element={<Trending/>} />
+                <Route path='/upper-wear' element={<UpperWear/>} />
+                <Route path='/bottom-wear' element={<BottomWear/>}/>
+                <Route path='/user-profile' element={<UserProfile/>}/>
+           
 
 
             </Route>
