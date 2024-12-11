@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const ProductSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentVariant, setCurrentVariant] = useState(
-    "6750b1055224450eb43250d4"
-  );
+  const [currentVariant, setCurrentVariant] = useState();
   const [images, setImages] = useState([]);
 
   const handlePrev = () => {
@@ -85,9 +83,8 @@ const ProductSlider = () => {
                   key={index}
                   src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`}
                   alt={`Thumbnail ${index + 1}`}
-                  className={`cursor-pointer w-16 h-16 object-cover rounded-xl transition-all duration-500 ${
-                    currentSlide === index ? "ring-4 ring-black" : ""
-                  }`}
+                  className={`cursor-pointer w-16 h-16 object-cover rounded-xl transition-all duration-500 ${currentSlide === index ? "ring-4 ring-black" : ""
+                    }`}
                   onClick={() => handleThumbnailClick(index)}
                 />
               ))}

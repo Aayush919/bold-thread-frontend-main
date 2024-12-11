@@ -1,11 +1,16 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import b1 from '../../../assets/banner/banner1.png'
+import b2 from '../../../assets/banner/banner2.png'
+import b3 from '../../../assets/banner/banner3.png'
+
 
 const Crouser = () => {
-    const images = [
-        "https://img.freepik.com/premium-psd/new-arrival-t-shirt-banner-template_361928-1580.jpg",
-        "https://media.contra.com/image/upload/aj53mqlr3nih4jnyy5og",
-        "https://www.vocso.com/blog/wp-content/uploads/2023/02/TheMangaStore-Ecommerce-Case-Study.jpg",
-    ];
+    const images = [b1, b2, b3]
+    // const images = [
+    //     "https://img.freepik.com/premium-psd/new-arrival-t-shirt-banner-template_361928-1580.jpg",
+    //     "https://media.contra.com/image/upload/aj53mqlr3nih4jnyy5og",
+    //     "https://www.vocso.com/blog/wp-content/uploads/2023/02/TheMangaStore-Ecommerce-Case-Study.jpg",
+    // ];
 
     const [currentIndex, setCurrentIndex] = useState(1); // Start from the 1st (real) image
     const [isTransitioning, setIsTransitioning] = useState(false);
@@ -69,7 +74,7 @@ const Crouser = () => {
                     transform: `translateX(-${currentIndex * 100}%)`,
                 }}
             >
-                {slides.map((image, index) => (
+                {slides && slides.length > 0 && slides.map((image, index) => (
                     <img
                         key={index}
                         src={image}

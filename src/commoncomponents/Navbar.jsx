@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsCart2, BsPerson } from "react-icons/bs";
 import { IoIosMenu, IoIosSearch, IoIosClose } from 'react-icons/io';
 import { useNavigate, Link } from 'react-router-dom';
@@ -16,6 +16,19 @@ export default function Navbar() {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden"; // Prevent scrolling
+    } else {
+      document.body.style.overflow = ""; // Re-enable scrolling
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   return (
     <div className="top-0 left-0 w-full h-100 sm:h-50 p-2">
       <nav className="flex flex-col justify-between items-center">
@@ -24,9 +37,9 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button className="lg:hidden m-5" onClick={toggleMenu}>
             {isMenuOpen ? (
-              <IoIosClose className="text-4xl absolute top-5 left-0 z-50" />
+              <IoIosClose className="text-5xl absolute top-7 left-1 z-50 text-white" />
             ) : (
-              <IoIosMenu className="text-4xl  absolute top-5 left-2 z-50" />
+              <IoIosMenu className="text-4xl  absolute top-7 left-1 z-50" />
             )}
           </button>
 
@@ -34,7 +47,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="logo"
-            className="logo cursor-pointer w-[15vw] sm:w-[15vw] md:w-[8vw] lg:w-[8vw] xl:w-[7vw] mt-1"
+            className="logo cursor-pointer w-[15vw] sm:w-[15vw] md:w-[8vw] lg:w-[8vw] xl:w-[7vw] mt-4 sm:mt-0"
           />
 
 
@@ -43,25 +56,25 @@ export default function Navbar() {
             className={`fixed top-0 left-0 w-full xl:h-0 h-96 py-3
               lg:static lg:h-auto lg:bg-transparent h-full
               mt-5
-              ${isMenuOpen ? 'translate-x-0 bg-white' : '-translate-x-full lg:translate-x-0'}
+              ${isMenuOpen ? 'translate-x-0 bg-black bg-opacity-70' : '-translate-x-full lg:translate-x-0'}
               flex items-center justify-center z-40 lg:z-auto`}
           >
             <div className={`flex flex-col lg:flex-row gap-7 text-base sm:text-lg ${isMenuOpen ? 'translate-x-0 mt-10' : '-translate-x-full lg:translate-x-0'}`}>
               {/* <Link to="/profile" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)} md-none>Profile</Link> */}
               <Link to="/profile"
-                className="hover:text-blue-500 md:hidden"
+                className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white ' : 'text-black hidden'}`}
                 onClick={() => setIsMenuOpen(false)}>
                 Profile
               </Link>
 
-              <Link to="/" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Home</Link>
-              <Link to="/new-arrivals" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>New Arrivals</Link>
-              <Link to="/trending" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Trending</Link>
-              <Link to="/Customized" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Customized</Link>
-              <Link to="/upper-wear" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}>Upper Wear</Link>
-              <Link to="/bottom-wear" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}> Bottom Wear</Link>
-              <Link to="/store" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)}> Store</Link>
-            
+              <Link to="/" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Home</Link>
+              <Link to="/new-arrivals" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>New Arrivals</Link>
+              <Link to="/trending" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Trending</Link>
+              <Link to="/Customized" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Customized</Link>
+              <Link to="/upper-wear" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Upper Wear</Link>
+              <Link to="/bottom-wear" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}> Bottom Wear</Link>
+              <Link to="/store" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}> Store</Link>
+
               {/* Add more links here as needed */}
             </div>
           </div>
@@ -77,7 +90,7 @@ export default function Navbar() {
 
             {/* <span className='text-sm'>0</span> */}
             <BsCart2
-              className="text-gray-600 hover:text-blue-500 cursor-pointer mt-5"
+              className="text-gray-600 hover:text-blue-500 cursor-pointer mt-5 mr-2"
               size={25}
               onClick={() => navigate('/cart')}
             />
