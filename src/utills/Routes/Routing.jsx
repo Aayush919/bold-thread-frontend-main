@@ -10,6 +10,7 @@ import Trending from "../../pages/Trending";
 import UpperWear from "../../pages/UpperWear";
 import BottomWear from "../../pages/BottomWear";
 import UserProfile from "../../pages/UserProfile";
+import Customized from "../../pages/Customized";
 
 function Routing() {
     return (
@@ -25,6 +26,7 @@ function Routing() {
                 <Route path='/upper-wear' element={<UpperWear/>} />
                 <Route path='/bottom-wear' element={<BottomWear/>}/>
                 <Route path='/user-profile' element={<UserProfile/>}/>
+                <Route path='/customized' element={<Customized/>}/>
            
 
 
