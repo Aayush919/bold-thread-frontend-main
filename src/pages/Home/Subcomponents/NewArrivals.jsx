@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { FaRupeeSign } from "react-icons/fa";
 import axios from 'axios'
-import { urls } from "../../../config/urls";
+import { imgurl, urls } from "../../../config/urls";
 
 
 function NewArrivals() {
@@ -37,7 +37,7 @@ function NewArrivals() {
                         className="cursor-pointer flex-shrink-0 snap-center w-full max-w-sm mx-auto rounded-md overflow-hidden bg-white shadow-md relative"
                     >
                         <img
-                            src={`${urls}/document/variants[0][images][0]-1733507307529-141666883.jpg`}
+                            src={`${imgurl}/variants[0][images][0]-1733507307529-141666883.jpg`}
                             alt=""
                             className="w-full h-52 object-cover"
                         />
@@ -54,7 +54,7 @@ function NewArrivals() {
                         <div className="relative bottom-2 left-0 right-0 flex items-center gap-5 mt-5 w-full  flex flex-col sm:flex-row items-center  gap-5 w-full px-2">
                             <button
                                 className="text-white text-xs rounded-md p-2 bg-black w-full sm:w-auto"
-                                onClick={() => navigate(`/display/${category._id}`)}
+                                onClick={() => navigate(`/display/${category._id}/6750b1055224450eb43250d5`)}
                             >
                                 Order Now
                             </button>
