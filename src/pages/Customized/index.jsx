@@ -5,10 +5,7 @@ import blackhoodiefront from '../../assets/cutosmized/blackhoodie.jpg';
 import blackhoodieback from '../../assets/cutosmized/blackhoodies.avif';
 import redhoodiefront from '../../assets/cutosmized/redhoodies.jpg';
 import redhoodieback from '../../assets/cutosmized/redhoodieback.jpg';
-// import blackhoodieright from '../../assets/cutosmized/blackhoodieright.jpg'; // Add your right view image
-// import blackhoodieleft from '../../assets/cutosmized/blackhoodieleft.jpg'; // Add your left view image
-// import redhoodieright from '../../assets/cutosmized/redhoodieright.jpg'; // Add your right view image
-// import redhoodieleft from '../../assets/cutosmized/redhoodieleft.jpg'; // Add your left view image
+
 
 const Customized = () => {
   const [customTextFront, setCustomTextFront] = useState('Your Text');
@@ -67,7 +64,7 @@ const Customized = () => {
     setProductImage(productImages['Hoodie'][color]?.[newView] || productImages['Hoodie'].black.front);
   };
 
-  // Drag and drop logic
+
   const DraggableText = () => {
     const [{ isDragging }, drag] = useDrag(() => ({
       type: 'text',
