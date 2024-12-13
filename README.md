@@ -41,6 +41,7 @@ inr icons react icons
 //dicussion regarding popular products bro
 //discuss regarding bottom wear bro
 //also add loading bro ok done window scroll to top tommowrorr
+//anime product
 location / {
 /home/ubuntu/bold-thread-frontend-main/dist
 try_files $uri /index.html; # React ya SPA routing ke liye handle karega
