@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { urls } from "../../../config/urls";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { use } from "react";
 
 const ProductSlider = () => {
+  const { productId ,variantId} = useParams();
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentVariant, setCurrentVariant] = useState();
   const [images, setImages] = useState([]);
+
 
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -20,7 +24,7 @@ const ProductSlider = () => {
     setCurrentSlide(index);
   };
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState();
 
   const navigate = useNavigate();
 
@@ -30,7 +34,6 @@ const ProductSlider = () => {
         const response = await axios.get(
           `${urls}/product/product/6750b1055224450eb43250d9`
         );
-
         setProducts(response.data.data.data);
       } catch (err) {
         console.log(err);
@@ -41,16 +44,28 @@ const ProductSlider = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Current Variant:", currentVariant);
+    if(!currentVariant){
+      setCurrentVariant(variantId)
+      setCurrentSlide(0)
+
+    }
     console.log("Products:", products);
-    if (products?.variants) {
+    if (products&&products.variants.length>0) {
       const matchingVariant = products.variants.find(
         (variant) => variant._id === currentVariant
       );
-      console.log("Matching Variant:", matchingVariant);
+   
       setImages(matchingVariant ? matchingVariant.images : []);
     }
-  }, [currentVariant, products]);
+  }, [currentVariant, products,variantId]);
+
+
+  const handleVariantChange=(id)=>{
+    setCurrentVariant(id);
+    setCurrentSlide(0)
+  }
+
+
 
   return (
     <section className="p-1">
@@ -114,14 +129,14 @@ const ProductSlider = () => {
 
             <p className="font-medium text-lg text-gray-900 mb-2">Color</p>
             <div className="grid grid-cols-3 gap-3 mb-6 max-w-sm">
-              {products &&
-                products.variants.map((variant) => (
-                  <div key={variant._id} className="color-box group">
+              {products && products.variants.length>0&&
+                products.variants.map((variant,index) => (
+                  <div key={variant._id} className="color-box group" onClick={()=>handleVariantChange(variant._id)}>
                     <div>
-                      {/* Uncomment this img tag if you want to show images */}
+             
                       <img
-                        src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`} // Use the first image from the variant
-                        alt={variant.color} // Alt text for accessibility
+                        src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`} 
+                        alt={variant.color} 
                         className="border-2 border-gray-100 rounded-xl group-hover:border-black object-cover"
                       />
                       <p className="text-sm text-gray-400 text-center mt-2 group-hover:text-black">

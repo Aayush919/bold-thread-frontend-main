@@ -79,7 +79,7 @@ const Crouser = () => {
                         key={index}
                         src={image}
                         alt={`Slide ${index}`}
-                        className="w-full xl:h-[95vh] h-[30vh]'object-cover object-center flex-shrink-0"
+                        className="w-full xl:h-[75vh] h-[30vh]'object-cover object-center flex-shrink-0"
                     />
                 ))}
             </div>

@@ -25,7 +25,7 @@ const OldProduct = () => {
 
   return (
     <div className="overflow-hidden relative w-full py-6">
-      <div className="flex items-center space-x-4 animate-marquee">
+      <div className="flex items-center space-x-6 animate-marquee">
         {products && products.length > 0 && products?.map((category, index) => (
           <div
             key={index}
