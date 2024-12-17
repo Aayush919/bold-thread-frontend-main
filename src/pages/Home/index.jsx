@@ -5,6 +5,7 @@ import Trending from "./Subcomponents/Trending";
 import NewArrivals from "./Subcomponents/NewArrivals";
 import OldProduct from "./Subcomponents/OldProduct";
 import banner from '../../assets/banner/anime-banner.jpg';
+import OrderPopup from "../../commoncomponents/OrderPopup";
 
 
 
@@ -20,6 +21,7 @@ const Home = () => {
         <AnimatedVideo />
         <Trending />
         <OldProduct />
+   
 
     </>
 

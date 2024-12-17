@@ -2,7 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { urls } from "../../../config/urls";
 import { useNavigate, useParams } from "react-router-dom";
-import { use } from "react";
+import { useAuth } from "../../../AuthProvider/AuthProvider";
+import { useDispatch } from "react-redux";
+import { togglePopup } from "../../../redux/Slices/PopupSlice";
+
 
 const ProductSlider = () => {
   const { productId ,variantId} = useParams();
@@ -10,6 +13,8 @@ const ProductSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentVariant, setCurrentVariant] = useState();
   const [images, setImages] = useState([]);
+  const { user, loading } = useAuth();
+  const disptach=useDispatch()
 
 
   const handlePrev = () => {
@@ -63,6 +68,12 @@ const ProductSlider = () => {
   const handleVariantChange=(id)=>{
     setCurrentVariant(id);
     setCurrentSlide(0)
+  }
+
+  const Orderhanlder=()=>{
+  if(!user){
+    disptach(togglePopup())
+  }
   }
 
 
@@ -157,8 +168,9 @@ const ProductSlider = () => {
               <button
                 type="button"
                 className="w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                onClick={()=>Orderhanlder()}
               >
-                Buy Nowk
+                Buy Now
               </button>
             </div>
           </div>

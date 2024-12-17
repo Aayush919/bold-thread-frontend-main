@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons for showing/hiding password
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
@@ -9,18 +10,18 @@ export default function SignUp() {
   const [cnfpassword, setCnfPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // State for showing password
+  const [showCnfPassword, setShowCnfPassword] = useState(false); // State for showing confirm password
 
   const navigate = useNavigate();
 
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
 
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-    console.log('chla kya brown...')
-    console.log(username,email,password,cnfpassword)
-
+  
     if (!username || !email || !password || !cnfpassword) {
       setError("All fields are required.");
       return;
@@ -33,6 +34,7 @@ export default function SignUp() {
     }
 
     if (!passwordRegex.test(password)) {
+      console.log(password)
       setError("Password must be at least 8 characters long and contain at least one letter and one number.");
       return;
     }
@@ -45,16 +47,22 @@ export default function SignUp() {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/user/signup", { username, email, password });
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/auth/register",
+        { username, email, password },
+        {
+          withCredentials: true, // Ensure cookies are included
+        }
+      );
       console.log(response.data);
-      navigate('/')
-
+      navigate('/'); // Navigate to the desired page
     } catch (error) {
       console.error("Error during API call:", error);
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
+    
   };
 
   return (
@@ -96,31 +104,43 @@ export default function SignUp() {
 
             <div className="mt-6">
               <label htmlFor="password" className="block text-sm font-medium leading-5 text-gray-700">Password</label>
-              <div className="mt-1 rounded-md shadow-sm">
+              <div className="mt-1 rounded-md shadow-sm relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
+                <span
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash className="h-5 w-5 text-gray-500" /> : <FaEye className="h-5 w-5 text-gray-500" />}
+                </span>
               </div>
             </div>
 
             <div className="mt-6">
               <label htmlFor="password_confirmation" className="block text-sm font-medium leading-5 text-gray-700">Confirm Password</label>
-              <div className="mt-1 rounded-md shadow-sm">
+              <div className="mt-1 rounded-md shadow-sm relative">
                 <input
                   id="password_confirmation"
                   name="password_confirmation"
-                  type="password"
+                  type={showCnfPassword ? "text" : "password"}
                   required
                   value={cnfpassword}
                   onChange={(e) => setCnfPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
+                <span
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                  onClick={() => setShowCnfPassword(!showCnfPassword)}
+                >
+                  {showCnfPassword ? <FaEyeSlash className="h-5 w-5 text-gray-500" /> : <FaEye className="h-5 w-5 text-gray-500" />}
+                </span>
               </div>
             </div>
 
@@ -142,6 +162,5 @@ export default function SignUp() {
         </div>
       </div>
     </div>
-
   );
 }

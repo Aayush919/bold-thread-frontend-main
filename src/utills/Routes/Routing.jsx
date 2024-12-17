@@ -11,6 +11,7 @@ import UpperWear from "../../pages/UpperWear";
 // import BottomWear from "../../pages/BottomWear";
 import UserProfile from "../../pages/UserProfile";
 import Customized from "../../pages/Customized";
+import SignUp from "../../commoncomponents/SignUp";
 // import Customized from "../../pages/Customized";
 
 function Routing() {
@@ -32,6 +33,7 @@ function Routing() {
 
 
             </Route>
+                <Route path='/signup' element={<SignUp/>}/>
             <Route path='*' element={<ComingSoon />} />
         </Routes>
     );
