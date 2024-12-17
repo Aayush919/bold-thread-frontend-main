@@ -7,6 +7,7 @@ import redhoodiefront from '../../assets/cutosmized/redhoodies.jpg';
 import redhoodieback from '../../assets/cutosmized/redhoodieback.jpg';
 
 
+
 const Customized = () => {
   const [customTextFront, setCustomTextFront] = useState('Your Text');
   const [customTextBack, setCustomTextBack] = useState('Your Text');
@@ -19,7 +20,7 @@ const Customized = () => {
   const [fontWeight, setFontWeight] = useState('bold');
   const [fontStyle, setFontStyle] = useState('normal');
   const [bendAmount, setBendAmount] = useState(0);
-  
+
   // Separate positions for each view
   const [position, setPosition] = useState({
     front: { x: 0, y: 0 },
@@ -38,13 +39,13 @@ const Customized = () => {
       black: {
         front: blackhoodiefront,
         back: blackhoodieback,
-        right: blackhoodiefront, // Add right view image
-        left: blackhoodieback,   // Add left view image
+        right: "https://www.promotrenz.co.nz/wp-content/uploads/2014/06/ZHH-premium-zip-hoodie-black-right-side-hood-down.jpg", // Add right view image
+        left: "https://www.seekpng.com/png/detail/113-1132863_black-hoodie-side-png.png"   // Add left view image
       },
       red: {
         front: redhoodiefront,
         back: redhoodieback,
-     // Add left view image
+        // Add left view image
       },
     },
   };
@@ -127,6 +128,14 @@ const Customized = () => {
       setCustomTextBack('');
     }
   };
+
+
+
+
+
+
+
+
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -270,6 +279,7 @@ const Customized = () => {
                   className="w-full p-2 border border-gray-300 rounded-md"
                 />
               </div>
+
             </div>
           </div>
         </div>
@@ -279,3 +289,6 @@ const Customized = () => {
 };
 
 export default Customized;
+
+
+

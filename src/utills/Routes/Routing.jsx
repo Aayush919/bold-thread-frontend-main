@@ -21,14 +21,14 @@ function Routing() {
             <Route path="/" element={<MainLayout />} >
 
                 <Route index element={<Home />} />
-                <Route path='/display/:productId/:variantId' element={<DisplayPage/>} />
+                <Route path='/display/:productId/:variantId' element={<DisplayPage />} />
                 {/* <Route path='/checkout/:productid/:variantId' element={<Checkout />} /> */}
                 <Route path='/new-arrivals' element={<NewArrival />} />
                 <Route path='/trending' element={<Trending />} />
                 <Route path='/upper-wear' element={<UpperWear />} />
                 {/* <Route path='/bottom-wear' element={<BottomWear />} /> */}
                 <Route path='/user-profile' element={<UserProfile />} />
-                <Route path='/customized' element={<Customized/>} />
+                <Route path='/customized' element={<Customized />} />
 
 
 

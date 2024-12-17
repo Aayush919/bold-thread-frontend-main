@@ -30,7 +30,7 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <div className="top-0 left-0 w-full h-100 sm:h-50 p-2">
+    <div className="top-0 left-0 w-full h-100 sm:h-50 p-3">
       <nav className="flex flex-col justify-between items-center">
         <div className="w-full flex lg:flex-row xl:justify-between justify-between items-start xl:gap-5 xl:mt-2 mt-2  h-20 mb-5 sm:mb-2">
 
