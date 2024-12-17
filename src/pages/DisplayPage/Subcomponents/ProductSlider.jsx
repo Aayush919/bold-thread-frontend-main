@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { urls } from "../../../config/urls";
+import { imgurl, urls } from "../../../config/urls";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../../AuthProvider/AuthProvider";
 import { useDispatch } from "react-redux";
@@ -8,13 +8,13 @@ import { togglePopup } from "../../../redux/Slices/PopupSlice";
 
 
 const ProductSlider = () => {
-  const { productId ,variantId} = useParams();
+  const { productId, variantId } = useParams();
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentVariant, setCurrentVariant] = useState();
   const [images, setImages] = useState([]);
-  const { user, loading } = useAuth();
-  const disptach=useDispatch()
+
+  const disptach = useDispatch()
 
 
   const handlePrev = () => {
@@ -49,31 +49,32 @@ const ProductSlider = () => {
   }, []);
 
   useEffect(() => {
-    if(!currentVariant){
+    if (!currentVariant) {
       setCurrentVariant(variantId)
       setCurrentSlide(0)
 
     }
     console.log("Products:", products);
-    if (products&&products.variants.length>0) {
+    if (products && products.variants.length > 0) {
       const matchingVariant = products.variants.find(
         (variant) => variant._id === currentVariant
       );
-   
+
       setImages(matchingVariant ? matchingVariant.images : []);
     }
-  }, [currentVariant, products,variantId]);
+  }, [currentVariant, products, variantId]);
 
 
-  const handleVariantChange=(id)=>{
+  const handleVariantChange = (id) => {
     setCurrentVariant(id);
     setCurrentSlide(0)
   }
 
-  const Orderhanlder=()=>{
-  if(!user){
-    disptach(togglePopup())
-  }
+  const Orderhanlder = () => {
+    console.log('order handler bro..')
+    // if (!user) {
+    //   disptach(togglePopup())
+    // }
   }
 
 
@@ -85,7 +86,7 @@ const ProductSlider = () => {
           <div className="slider-box w-full h-full mx-auto">
             <div className="relative w-full h-96 overflow-hidden rounded-2xl bg-gray-200">
               <img
-                src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`}
+                src={`${imgurl}/variants[0][images][0]-1733507307529-141666883.jpg`}
                 alt={`Slide ${currentSlide + 1}`}
                 className="w-full h-full object-cover"
               />
@@ -107,7 +108,7 @@ const ProductSlider = () => {
               {images?.map((thumbnail, index) => (
                 <img
                   key={index}
-                  src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`}
+                  src={`${imgurl}/variants[0][images][0]-1733507307529-141666883.jpg`}
                   alt={`Thumbnail ${index + 1}`}
                   className={`cursor-pointer w-16 h-16 object-cover rounded-xl transition-all duration-500 ${currentSlide === index ? "ring-4 ring-black" : ""
                     }`}
@@ -140,14 +141,14 @@ const ProductSlider = () => {
 
             <p className="font-medium text-lg text-gray-900 mb-2">Color</p>
             <div className="grid grid-cols-3 gap-3 mb-6 max-w-sm">
-              {products && products.variants.length>0&&
-                products.variants.map((variant,index) => (
-                  <div key={variant._id} className="color-box group" onClick={()=>handleVariantChange(variant._id)}>
+              {products && products.variants.length > 0 &&
+                products.variants.map((variant, index) => (
+                  <div key={variant._id} className="color-box group" onClick={() => handleVariantChange(variant._id)}>
                     <div>
-             
+
                       <img
-                        src={`http://localhost:3000/api/document/variants[0][images][0]-1733507307529-141666883.jpg`} 
-                        alt={variant.color} 
+                        src={`${imgurl}/variants[0][images][0]-1733507307529-141666883.jpg`}
+                        alt={variant.color}
                         className="border-2 border-gray-100 rounded-xl group-hover:border-black object-cover"
                       />
                       <p className="text-sm text-gray-400 text-center mt-2 group-hover:text-black">
@@ -168,7 +169,7 @@ const ProductSlider = () => {
               <button
                 type="button"
                 className="w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                onClick={()=>Orderhanlder()}
+                onClick={() => Orderhanlder()}
               >
                 Buy Now
               </button>

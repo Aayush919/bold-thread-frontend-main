@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import b1 from '../../../assets/banner/banner1.png'
-import b2 from '../../../assets/banner/banner2.png'
-import b3 from '../../../assets/banner/banner3.png'
+import { imgurl } from "../../../config/urls";
+// import b1 from '../../../assets/banner/banner1.png'
+// import b2 from '../../../assets/banner/banner2.png'
+// import b3 from '../../../assets/banner/banner3.png'
+
 
 
 const Crouser = () => {
-    const images = [b1, b2, b3]
+    // const images = [b1, b2, b3]
+    const images = [`${imgurl}/banner1.png`, `${imgurl}/banner2.png`, `${imgurl}/banner3.png`]
     // const images = [
     //     "https://img.freepik.com/premium-psd/new-arrival-t-shirt-banner-template_361928-1580.jpg",
     //     "https://media.contra.com/image/upload/aj53mqlr3nih4jnyy5og",

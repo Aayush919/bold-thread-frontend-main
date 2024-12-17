@@ -28,10 +28,8 @@
     //distressed jeasn coming soon
     //hoodies
     //summer colletion to today deal
-
     //same like trending page home page
     //reverse store
-
     //searching and filter
     //delviery and payment
     //orders and add to cart

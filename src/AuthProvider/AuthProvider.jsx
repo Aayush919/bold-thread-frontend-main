@@ -1,4 +1,4 @@
-import  { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
 // Create a context
@@ -8,16 +8,17 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [indicate, setIndicate] = useState(false);
 
   useEffect(() => {
- 
+
     const checkAuth = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/v1/auth/verify', {
-          withCredentials: true, 
+          withCredentials: true,
         });
-        console.log(response)
-        setUser(response.data.user); 
+
+        setUser(response.data.user);
       } catch (error) {
         console.error('User is not authenticated', error);
         setUser(null);
@@ -30,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading }}>
+    <AuthContext.Provider value={{ user, setUser, loading, setIndicate }}>
       {children}
     </AuthContext.Provider>
   );

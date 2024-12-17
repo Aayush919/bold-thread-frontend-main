@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons for showing/hiding password
+import { useAuth } from "../AuthProvider/AuthProvider";
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
@@ -14,6 +15,7 @@ export default function SignUp() {
   const [showCnfPassword, setShowCnfPassword] = useState(false); // State for showing confirm password
 
   const navigate = useNavigate();
+  // const { setIndicate } = useAuth();
 
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
 
@@ -21,7 +23,7 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-  
+
     if (!username || !email || !password || !cnfpassword) {
       setError("All fields are required.");
       return;
@@ -55,14 +57,17 @@ export default function SignUp() {
         }
       );
       console.log(response.data);
-      navigate('/'); // Navigate to the desired page
+
+
+      navigate('/');
+      setIndicate(true)
     } catch (error) {
       console.error("Error during API call:", error);
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
-    
+
   };
 
   return (
