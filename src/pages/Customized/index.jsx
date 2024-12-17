@@ -29,6 +29,51 @@ const Customized = () => {
     left: { x: 0, y: 0 },
   });
 
+
+  const [graphics, setGraphics] = useState({
+    front: [],
+    back: [],
+  });
+
+  const graphicOptions = [
+    'https://images-workbench.99static.com/r-CF6az9N-thLE033Ytq_2J9KSE=/99designs-contests-attachments/76/76070/attachment_76070644',
+    'https://images-platform.99static.com//_xj6HIW6K7zenjzRNAbMpfG9120=/0x0:1500x1500/fit-in/590x590/99designs-contests-attachments/144/144728/attachment_144728684',
+  ];
+
+
+  const handleAddGraphic = (url) => {
+    setGraphics((prev) => ({
+      ...prev,
+      [view]: [...prev[view], { id: Date.now(), src: url, x: 100, y: 100 }],
+    }));
+  };
+
+  const handleDropg = (item, monitor) => {
+    const delta = monitor.getDifferenceFromInitialOffset();
+    if (delta) {
+      setGraphics((prev) => ({
+        ...prev,
+        [view]: prev[view].map((graphic) =>
+          graphic.id === item.id
+            ? {
+              ...graphic,
+              x: Math.round(graphic.x + delta.x),
+              y: Math.round(graphic.y + delta.y),
+            }
+            : graphic
+        ),
+      }));
+    }
+  };
+
+  const handleDeleteGraphic = (id) => {
+    setGraphics((prev) => ({
+      ...prev,
+      [view]: prev[view].filter((graphic) => graphic.id !== id),
+    }));
+  };
+
+
   const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
   const fontSizes = ['16px', '18px', '20px', '24px', '28px'];
   const fontWeights = ['normal', 'bold', 'bolder', 'lighter'];
@@ -39,8 +84,6 @@ const Customized = () => {
       black: {
         front: blackhoodiefront,
         back: blackhoodieback,
-        right: "https://www.promotrenz.co.nz/wp-content/uploads/2014/06/ZHH-premium-zip-hoodie-black-right-side-hood-down.jpg", // Add right view image
-        left: "https://www.seekpng.com/png/detail/113-1132863_black-hoodie-side-png.png"   // Add left view image
       },
       red: {
         front: redhoodiefront,
@@ -69,7 +112,7 @@ const Customized = () => {
   const DraggableText = () => {
     const [{ isDragging }, drag] = useDrag(() => ({
       type: 'text',
-      item: { text: view === 'front' ? customTextFront : customTextBack, color: textColor },
+      item: { text: view === 'front' ? customTextFront : customTextBack, color: view === 'front' ? textColor : textColorBack },
       collect: (monitor) => ({
         isDragging: monitor.isDragging(),
       }),
@@ -90,7 +133,7 @@ const Customized = () => {
           transform: `rotate(${bendAmount}deg)`, // Circular bend effect
         }}
       >
-        {view === 'front' ? customTextFront : view === 'back' ? customTextBack : view === 'right' ? customTextFront : customTextBack}
+        {view === 'front' ? customTextFront : view === 'back' ? customTextFront : customTextBack}
       </div>
     );
   };
@@ -106,6 +149,50 @@ const Customized = () => {
         },
       }));
     }
+  };
+
+  const Graphic = ({ graphic }) => {
+    const [, drag] = useDrag(() => ({
+      type: 'graphic',
+      item: graphic,
+    }));
+
+    return (
+      <div
+        ref={drag}
+        style={{
+          position: 'absolute',
+          top: graphic.y,
+          left: graphic.x,
+        }}
+      >
+        <img
+          src={graphic.src}
+          alt="Graphic"
+          style={{
+            width: '100px',
+            height: '100px',
+          }}
+        />
+        <button
+          onClick={() => handleDeleteGraphic(graphic.id)}
+          style={{
+            position: 'absolute',
+            top: -10,
+            right: -10,
+            backgroundColor: 'red',
+            color: 'white',
+            borderRadius: '50%',
+            border: 'none',
+            cursor: 'pointer',
+            width: '20px',
+            height: '20px',
+          }}
+        >
+          ×
+        </button>
+      </div>
+    );
   };
 
   const DropTarget = ({ children }) => {
@@ -129,6 +216,25 @@ const Customized = () => {
     }
   };
 
+  const DropTargets = ({ children }) => {
+    const [, drop] = useDrop(() => ({
+      accept: 'graphic',
+      drop: handleDropg,
+    }));
+
+    return (
+      <div
+        ref={drop}
+        className="relative flex items-center justify-center bg-gray-100 rounded-lg h-96"
+      >
+        {children}
+        {graphics[view].map((graphic) => (
+          <Graphic key={graphic.id} graphic={graphic} />
+        ))}
+      </div>
+    );
+  };
+
 
 
 
@@ -145,19 +251,20 @@ const Customized = () => {
             {/* Mockup Preview */}
             <div className="p-6 border border-gray-300 rounded-lg">
               <h2 className="text-lg font-semibold mb-4">Preview</h2>
-              <DropTarget>
-                {/* Product Image Preview */}
-                <img src={productImage} alt="Product Preview" className="w-64 h-64 object-cover" />
-                {/* Draggable Text Overlay */}
-                <DraggableText />
-              </DropTarget>
+              <DropTargets>
+                <DropTarget>
+                  {/* Product Image Preview */}
+                  <img src={productImage} alt="Product Preview" className="w-64 h-64 object-cover" />
+                  {/* Draggable Text Overlay */}
+                  <DraggableText />
+                </DropTarget>
+              </DropTargets>
 
               {/* View Selector */}
               <div className="flex space-x-4 mt-4">
                 <button onClick={() => handleViewChange('front')} className={`py-2 px-4 rounded-md ${view === 'front' ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700'}`}>Front</button>
                 <button onClick={() => handleViewChange('back')} className={`py-2 px-4 rounded-md ${view === 'back' ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700'}`}>Back</button>
-                <button onClick={() => handleViewChange('right')} className={`py-2 px-4 rounded-md ${view === 'right' ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700'}`}>Right</button>
-                <button onClick={() => handleViewChange('left')} className={`py-2 px-4 rounded-md ${view === 'left' ? 'bg-indigo-500 text-white' : 'bg-gray-200 text-gray-700'}`}>Left</button>
+
               </div>
 
               {/* Clear Text Button */}
@@ -281,6 +388,22 @@ const Customized = () => {
               </div>
 
             </div>
+          </div>
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium mb-2">
+            Select a Graphic
+          </label>
+          <div className="flex space-x-4">
+            {graphicOptions.map((url, index) => (
+              <img
+                key={index}
+                src={url}
+                alt={`Graphic ${index + 1}`}
+                onClick={() => handleAddGraphic(url)}
+                className="w-16 h-16 object-cover cursor-pointer border rounded-md"
+              />
+            ))}
           </div>
         </div>
       </div>
