@@ -49,7 +49,8 @@ const OldProduct = () => {
             <div className="relative bottom-2 left-0 right-0 flex items-center gap-5 mt-5 w-full  flex flex-col sm:flex-row items-center  gap-5 w-full px-2">
               <button
                 className="text-white text-xs rounded-md p-2 bg-black w-full sm:w-auto"
-                onClick={() => navigate(`/display/${category._id}`)}
+                onClick={() => navigate(`/display/${category._id}/6750b1055224450eb43250d5`)}
+
               >
                 Order Now
               </button>

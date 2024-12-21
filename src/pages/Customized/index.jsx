@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import blackhoodiefront from '../../assets/cutosmized/blackhoodie.jpg';
@@ -15,7 +15,7 @@ const Customized = () => {
   const [productImage, setProductImage] = useState(blackhoodiefront);
   const [size, setSize] = useState('M');
   const [color, setColor] = useState('black');
-  const [view, setView] = useState('front'); // Updated to include more views
+  const [view, setView] = useState('front');
   const [fontSize, setFontSize] = useState('20px');
   const [fontWeight, setFontWeight] = useState('bold');
   const [fontStyle, setFontStyle] = useState('normal');
@@ -117,6 +117,10 @@ const Customized = () => {
         isDragging: monitor.isDragging(),
       }),
     }));
+
+    useEffect(() => {
+      window.scrollTo(0, 0); // Scroll to the top-left corner
+    }, []);
 
     return (
       <div

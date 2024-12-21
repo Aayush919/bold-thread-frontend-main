@@ -71,10 +71,7 @@ const ProductSlider = () => {
   }
 
   const Orderhanlder = () => {
-    console.log('order handler bro..')
-    // if (!user) {
-    //   disptach(togglePopup())
-    // }
+    navigate(`/checkout/${productId}/${variantId}`)
   }
 
 

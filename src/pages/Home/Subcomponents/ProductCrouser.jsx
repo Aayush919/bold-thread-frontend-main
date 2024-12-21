@@ -10,7 +10,7 @@ function ProductCrouser() {
 
             <div
                 className="group cursor-pointer overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl"
-                onClick={() => navigate("/Tshirt")}
+            // onClick={() => navigate("/Tshirt")}
             >
                 <div className="relative aspect-square">
                     <img
@@ -23,7 +23,7 @@ function ProductCrouser() {
 
             <div
                 className="group cursor-pointer overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl "
-                onClick={() => navigate("/bottom-wear")}
+            // onClick={() => navigate("/bottom-wear")}
             >
                 <div className="relative aspect-square ">
                     <img
@@ -36,7 +36,7 @@ function ProductCrouser() {
 
             <div
                 className="group cursor-pointer overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl"
-                onClick={() => navigate("/Hoodie")}
+            // onClick={() => navigate("/Hoodie")}
             >
                 <div className="relative aspect-square">
                     <img
@@ -52,7 +52,7 @@ function ProductCrouser() {
 
             <div
                 className="group cursor-pointer overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl"
-                onClick={() => navigate("/seasonals")}
+            // onClick={() => navigate("/seasonals")}
             >
                 <div className="relative aspect-square">
                     <img

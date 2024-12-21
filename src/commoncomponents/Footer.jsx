@@ -16,30 +16,33 @@ export default function Footer() {
             <h3 className="text-xl font-bold">Products</h3>
             <ul className="text-sm space-y-2 mt-5">
               <li><Link to="/new-arrivals" className="hover:text-gray-300 transition-colors">New Arrival</Link></li>
-              <li><Link to="/seasonals" className="hover:text-gray-300 transition-colors">Seasonals</Link></li>
+              <li><Link to="/customized" className="hover:text-gray-300 transition-colors">Customized</Link></li>
               <li><Link to="/trending" className="hover:text-gray-300 transition-colors">Trending</Link></li>
               <li><Link to="/upper-wear" className="hover:text-gray-300 transition-colors">Upper Wear</Link></li>
               <li><Link to="/bottom-wear" className="hover:text-gray-300 transition-colors">Bottom Wear</Link></li>
+              <li><Link to="/store" className="hover:text-gray-300 transition-colors">Store</Link></li>
             </ul>
           </div>
 
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">About</h3>
+            <h3 className="text-xl font-bold mb-4">Customare Care</h3>
             <ul className="text-sm space-y-2">
-              <li><Link to="#" className="hover:text-gray-300 transition-colors">History</Link></li>
-              <li><Link to="#" className="hover:text-gray-300 transition-colors">Philosophy</Link></li>
-              <li><Link to="#" className="hover:text-gray-300 transition-colors">Store</Link></li>
+              {/* <li><Link to="#" className="hover:text-gray-300 transition-colors">History</Link></li>
+              <li><Link to="#" className="hover:text-gray-300 transition-colors">Philosophy</Link></li> */}
+              {/* <li><Link to="/store" className="hover:text-gray-300 transition-colors"></Link></li> */}
+              <p>support@bold-thread.com</p>
+              <p className="text-sm mb-2">Phone: (+91) 9201634268</p>
             </ul>
           </div>
 
           {/* Contact Us Section */}
           <div>
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-            <p className="text-sm mb-2">boltthreads@gmail.com</p>
-            <p className="text-sm mb-2">Phone: (123) 456-7890</p>
+            <p className="text-sm mb-2">info@bold-thread.com</p>
+            <p className="text-sm mb-2">Phone: (+91) 9201634268</p>
             <p className="text-sm mb-4">India</p>
-            <div className="flex gap-3">
+            {/* <div className="flex gap-3">
               <Link to="#" className="text-white hover:text-gray-300 transition-colors">
                 <IoLogoFacebook className="text-2xl" />
               </Link>
@@ -52,7 +55,7 @@ export default function Footer() {
               <Link to="#" className="text-white hover:text-gray-300 transition-colors">
                 <FaInstagram className="text-2xl" />
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* Policy Section */}

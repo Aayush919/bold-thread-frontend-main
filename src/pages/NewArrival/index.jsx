@@ -5,6 +5,7 @@
 // import { useNavigate } from "react-router-dom";
 // import { urls } from "../../config/urls";
 
+import { useEffect } from "react";
 import NewArrivals from "../Home/Subcomponents/NewArrivals";
 
 export default function NewArrival() {
@@ -25,6 +26,9 @@ export default function NewArrival() {
 
 
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top-left corner
+  }, []);
 
   return (
     <div className="   p-2">

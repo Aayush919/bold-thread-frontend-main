@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 
 // import phonPay from '../../assets/payment/Phonepe.png'
 function Checkout() {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top-left corner
+  }, []);
   return (
     <div className="font-sans p-4">
       <div className="max-w-4xl mx-auto">
