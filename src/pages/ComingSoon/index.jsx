@@ -1,40 +1,31 @@
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ComingSoon = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    // Dynamic content from previous route
+    const data = location.state || {};
+
     return (
-        <div className="flex items-center justify-center h-screen bg-gray-900 text-white">
-            <div className="text-center">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                    Coming Soon 🚀
+        <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+            <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
+                <h1 className="text-2xl font-bold mb-4 text-center text-gray-800">
+                    {data.type === "store"
+                        ? "Store Availability"
+                        : "Product Availability"}
                 </h1>
-                <p className="text-lg md:text-xl text-gray-300 mb-8">
-                    We’re working hard to bring something amazing for you. Stay tuned!
+                <p className="text-gray-600 text-center mb-6">
+                    {data.type === "store"
+                        ? "Our store will be available starting January."
+                        : "This product will be available starting January."}
                 </p>
-
-
-
-
-
-
-
-                {/* Content */}
-                <div className="z-10 text-center p-4">
-
-                    <p className="text-xl md:text-2xl mb-8">
-                        Get ready for our biggest sale of the year starting
-                        <span className="text-yellow-400 font-bold"> 25th December</span>!
-                    </p>
-                    <p className="text-lg mb-8">
-                        Enjoy massive discounts and exclusive offers. Don’t miss out!
-                    </p>
-                </div>
-
-
-                {/* Notify Me Button */}
-                <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-lg font-medium" onClick={() => navigate('/')}>
-                    Back To Home
+                <button
+                    onClick={() => navigate(-1)}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+                >
+                    Back
                 </button>
             </div>
         </div>

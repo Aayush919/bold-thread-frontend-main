@@ -1,65 +1,83 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { urls } from "../config/urls";
+import { useLoginMutation } from "../redux/Api/Auth";
+import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [login, { isLoading }] = useLoginMutation();
+  const [showPassword, setShowPassword] = useState(false);
 
 
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError(null);
 
-
+    // Validation
     if (!email || !password) {
-      setError("All fields are required.");
+      setError('All fields are required.');
       return;
     }
 
-    if (!emailRegex.test(email)) {
-      setError("Please enter a valid email.");
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      setError('Please enter a valid email.');
       return;
     }
-
 
     if (!passwordRegex.test(password)) {
-      setError("Password must be at least 8 characters.");
+      setError('Password must be at least 8 characters long and contain at least one letter and one number.');
       return;
     }
 
+    // Call RTK Query's login mutation
     try {
-      const response = await axios.post("/api/user/login", { email, password });
-
-      if (response.status === 200) {
-        localStorage.setItem("authToken", response.data.token);
-        navigate("/");
-      }
-    }
-    catch (err) {
-      setError("Invalid email or password. Please try again.");
+      await login({ email, password }).unwrap(); // `.unwrap` handles promise resolution
+      console.log('Login successful!');
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed:', error);
+      setError('Invalid email or password. Please try again.');
     }
   };
 
+
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form onSubmit={handleSubmit} method="POST">
-            {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
+
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md m-4">
+        <div className="absolute top-4 left-4 cursor-pointer" onClick={() => navigate(-1)}>
+          <FaArrowLeft className="h-6 w-6 text-black" />
+        </div>
+        <div className="bg-white py-8 px-6 shadow-lg rounded-xl sm:px-10 border border-gray-200">
+          <h2 className="text-2xl font-bold text-center text-black">Welcome Back</h2>
+          <p className="mt-2 text-sm text-center text-gray-600">
+            Sign in to your account and explore more!
+          </p>
+          <form onSubmit={handleSubmit} method="POST" className="mt-6">
+            {error && (
+              <div className="text-red-500 text-sm mb-4 border border-red-300 bg-red-100 px-4 py-2 rounded-md">
+                {error}
+              </div>
+            )}
 
             <div className="mt-4">
-              <label htmlFor="email" className="block text-sm font-medium leading-5 text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium leading-5 text-gray-800">
                 Email address
               </label>
-              <div className="mt-1 relative rounded-md shadow-sm">
+              <div className="mt-1 relative">
                 <input
                   id="email"
                   name="email"
@@ -68,54 +86,64 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                  className="appearance-none block w-full px-4 py-2 border border-black rounded-lg shadow-sm placeholder-gray-500 text-black focus:outline-none focus:ring-0 focus:border-black sm:text-sm"
                 />
               </div>
             </div>
 
-            <div className="mt-3">
-              <label htmlFor="password" className="block text-sm font-medium leading-5 text-gray-700">
+            <div className="mt-4">
+              <label htmlFor="password" className="block text-sm font-medium leading-5 text-gray-800">
                 Password
               </label>
-              <div className="mt-1 rounded-md shadow-sm">
+              <div className="mt-1 relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"} // Toggle password visibility
+                  autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                  className="appearance-none block w-full px-4 py-2 border border-black rounded-lg shadow-sm placeholder-gray-500 text-black focus:outline-none focus:ring-0 focus:border-black sm:text-sm"
                 />
+                <span
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)} // Toggle show/hide
+                >
+                  {showPassword ? (
+                    <FaEyeSlash className="h-5 w-5 text-gray-500" />
+                  ) : (
+                    <FaEye className="h-5 w-5 text-gray-500" />
+                  )}
+                </span>
               </div>
             </div>
 
-            <div className="mt-10">
-              <span className="block w-full rounded-md shadow-sm">
-                <button
-                  type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 shadow-lg rounded hover:bg-blue-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-                >
-                  Log in
-                </button>
-              </span>
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-black shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 transition duration-150"
+                disabled={isLoading}
+              >
+                {isLoading ? "Logging in..." : "Log in"}
+              </button>
             </div>
           </form>
 
-          <button className="flex justify-around items-center text-center w-full mx-auto py-2 px-2 font-medium shadow-lg rounded bg-white my-3 hover:bg-four">
-            <img
-              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
-              className="relative w-5 h-5 ml-0 mr-2"
-              alt="google logo"
-            />
-            <span className="w-5/6">Log in with Google</span>
-          </button>
-
-          <p className="text-center my-2 cursor-pointer">
-            Create a new <span onClick={() => navigate('/signup')}>account</span> ?
+          <p className="text-center mt-6 text-sm text-gray-700">
+            Don't have an account?{" "}
+            <span
+              onClick={() => navigate("/signup")}
+              className="text-blue-600 font-medium cursor-pointer hover:underline"
+            >
+              Sign up
+            </span>
           </p>
         </div>
       </div>
     </div>
+
+
+
   );
 }

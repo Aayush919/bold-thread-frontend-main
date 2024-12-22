@@ -9,12 +9,13 @@ import NewArrival from "../../pages/NewArrival";
 import Trending from "../../pages/Trending";
 import UpperWear from "../../pages/UpperWear";
 // import BottomWear from "../../pages/BottomWear";
-import UserProfile from "../../pages/UserProfile";
+
 import Customized from "../../pages/Customized";
 import SignUp from "../../commoncomponents/SignUp";
 import PrivacyPolicy from "../../pages/Policies/PrivacyPolicy";
 import TermsAndConditions from "../../pages/Policies/TermsAndConditions";
 import CancelPolicy from "../../pages/Policies/CancelPolicy";
+import Login from "../../commoncomponents/Login";
 
 // import Customized from "../../pages/Customized";
 
@@ -31,7 +32,7 @@ function Routing() {
                 <Route path='/trending' element={<Trending />} />
                 <Route path='/upper-wear' element={<UpperWear />} />
                 {/* <Route path='/bottom-wear' element={<BottomWear />} /> */}
-                <Route path='/user-profile' element={<UserProfile />} />
+
                 <Route path='/customized' element={<Customized />} />
                 <Route path='/terms' element={<TermsAndConditions />} />
                 <Route path='/privacypolicy' element={<PrivacyPolicy />} />
@@ -40,9 +41,11 @@ function Routing() {
 
 
 
+
             </Route>
             <Route path='/signup' element={<SignUp />} />
-            <Route path='*' element={<ComingSoon />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/info' element={<ComingSoon />} />
         </Routes>
     );
 }

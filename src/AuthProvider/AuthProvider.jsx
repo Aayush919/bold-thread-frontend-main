@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { useVerifyAuthQuery } from '../redux/Api/Auth';
 
 // Create a context
 const AuthContext = createContext();
@@ -8,30 +9,27 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [indicate, setIndicate] = useState(false);
+
+  const { data, isLoading, isError } = useVerifyAuthQuery();
 
   useEffect(() => {
+    if (isError) {
+      console.error('User is not authenticated');
+      setUser(null);
+      return;
+    }
 
-    const checkAuth = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/v1/auth/verify', {
-          withCredentials: true,
-        });
 
-        setUser(response.data.user);
-      } catch (error) {
-        console.error('User is not authenticated', error);
-        setUser(null);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    checkAuth();
-  }, []);
+    if (data) {
+      setUser(data.user);
+    }
+
+    setLoading(isLoading);
+  }, [data, isError, isLoading]);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading, setIndicate }}>
+    <AuthContext.Provider value={{ user, setUser, loading }}>
       {children}
     </AuthContext.Provider>
   );

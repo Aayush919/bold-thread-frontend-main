@@ -1,5 +1,5 @@
 import { IoLogoFacebook, IoLogoLinkedin } from "react-icons/io";
-import { FaSquareTwitter, FaInstagram } from "react-icons/fa6";
+import { FaSquareTwitter, FaInstagram, FaGoogle } from "react-icons/fa6";
 import { useNavigate, Link } from "react-router-dom";
 
 export default function Footer() {
@@ -19,8 +19,8 @@ export default function Footer() {
               <li><Link to="/customized" className="hover:text-gray-300 transition-colors">Customized</Link></li>
               <li><Link to="/trending" className="hover:text-gray-300 transition-colors">Trending</Link></li>
               <li><Link to="/upper-wear" className="hover:text-gray-300 transition-colors">Upper Wear</Link></li>
-              <li><Link to="/bottom-wear" className="hover:text-gray-300 transition-colors">Bottom Wear</Link></li>
-              <li><Link to="/store" className="hover:text-gray-300 transition-colors">Store</Link></li>
+              {/* <li><Link to="/bottom-wear" className="hover:text-gray-300 transition-colors">Bottom Wear</Link></li>
+              <li><Link to="/store" className="hover:text-gray-300 transition-colors">Store</Link></li> */}
             </ul>
           </div>
 
@@ -33,6 +33,7 @@ export default function Footer() {
               {/* <li><Link to="/store" className="hover:text-gray-300 transition-colors"></Link></li> */}
               <p>support@bold-thread.com</p>
               <p className="text-sm mb-2">Phone: (+91) 9201634268</p>
+              <p className="text-sm mb-2">Office: A1-16 SHIVANI COMPLEX VIDHYA VIHAR NAGAR HOSHNAGABAD ROAD Bhopal Madhya Pradesh 462026</p>
             </ul>
           </div>
 
@@ -41,21 +42,21 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">Contact Us</h3>
             <p className="text-sm mb-2">info@bold-thread.com</p>
             <p className="text-sm mb-2">Phone: (+91) 9201634268</p>
-            <p className="text-sm mb-4">India</p>
-            {/* <div className="flex gap-3">
-              <Link to="#" className="text-white hover:text-gray-300 transition-colors">
-                <IoLogoFacebook className="text-2xl" />
+            <p className="text-sm mb-4">Store: Shop No 20,Bagsewania,Near Vishwakrma Mandir,Bhopal (M.P),462043 </p>
+            <div className="flex gap-3">
+              <Link to="https://www.facebook.com/profile.php?id=61569179738517" className="text-white hover:text-gray-300 transition-colors">
+                <IoLogoFacebook className="text-xl" />
               </Link>
-              <Link to="#" className="text-white hover:text-gray-300 transition-colors">
-                <IoLogoLinkedin className="text-2xl" />
+
+              <Link to="https://www.google.com/search?q=bold-thread-clothes-bhopal&oq=bold-thread&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMgYIARBFGDkyBggCEEUYOzIICAMQABgKGB4yBggEEAAYHjIICAUQABgKGB4yCAgGEAAYCBgeMggIBxAAGAgYHjIICAgQABgIGB4yCAgJEAAYCBge0gEKMTE0MjBqMGoxNagCCLACAQ&sourceid=chrome&ie=UTF-8" className="text-white hover:text-gray-300 transition-colors">
+                <FaGoogle className="text-xl" />
+
               </Link>
-              <Link to="#" className="text-white hover:text-gray-300 transition-colors">
-                <FaSquareTwitter className="text-2xl" />
+              <Link to="https://www.instagram.com/boldthread_official?igsh=MWc2M2h1dGZmNW5vbQ==" className="text-white hover:text-gray-300 transition-colors">
+                <FaInstagram className="text-xl" />
+
               </Link>
-              <Link to="#" className="text-white hover:text-gray-300 transition-colors">
-                <FaInstagram className="text-2xl" />
-              </Link>
-            </div> */}
+            </div>
           </div>
 
           {/* Policy Section */}

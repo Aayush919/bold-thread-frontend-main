@@ -14,9 +14,9 @@ const CancelPolicy = () => {
             </header>
 
             {/* Introduction */}
-            <section className="bg-gray-50 p-6 rounded-lg mb-8">
+            <section className="mb-8">
                 <h2 className="text-2xl font-semibold text-gray-800">Introduction</h2>
-                <p className="text-gray-700 mt-4">
+                <p className="text-gray-700 mt-4 ml-6">
                     We at Bold-Thread believe that shopping for clothes should be an enjoyable and seamless experience. We understand that sometimes returns and cancellations may be necessary.
                     Whether it’s a size issue, a wrong color, or you simply changed your mind, we are here to help. Our cancellation and return process is designed to be transparent, fair, and easy to follow.
                 </p>
@@ -73,10 +73,10 @@ const CancelPolicy = () => {
 
                 <div className="bg-gray-50 p-6 rounded-lg  mt-4">
                     <h3 className="text-xl font-medium text-gray-800">Refund Method</h3>
-                    <p className="text-gray-700 mt-4">Refunds will be made to the original payment method (Credit/Debit Card, Net Banking, UPI, etc.). Store credit or gift cards will be refunded in the same form.</p>
+                    <p className="text-gray-700 mt-4">Refunds will be made to the original payment method (Credit/Debit Card, Net Banking, UPI, etc.) </p>
 
                     <h3 className="text-xl font-medium text-gray-800 mt-6">Refund Timeline</h3>
-                    <p className="text-gray-700 mt-4">Refunds are processed within 5-7 business days after the return is approved. Depending on your payment provider, the refund may take additional time to reflect in your account.</p>
+                    <p className="text-gray-700 mt-4">Refunds will complete  within 5-7 business days after the return is approved. Depending on your payment provider, the refund may take additional time to reflect in your account.</p>
 
                     <h3 className="text-xl font-medium text-gray-800 mt-6">Partial Refund</h3>
                     <p className="text-gray-700 mt-4">If the product is returned damaged, without tags, or with visible wear and tear, we may issue a partial refund after deductions for damages.</p>
@@ -100,7 +100,7 @@ const CancelPolicy = () => {
 
             {/* Footer */}
             <footer className="text-center mt-8">
-                <p className="text-sm text-gray-600">For any questions or assistance, feel free to contact us at <a href="mailto:support@boldthread.com" className="text-blue-500">support@boldthread.com</a> or call us at <strong>+91-xxxx-xxxxxx</strong>.</p>
+                <p className="text-sm text-gray-600">For any questions or assistance, feel free to contact us at <a href="mailto:support@boldthread.com" className="text-blue-500">support@bold-thread.com</a> or call us at <strong>(+91) 9201634268</strong>.</p>
             </footer>
         </div>
     );

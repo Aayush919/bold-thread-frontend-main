@@ -5,16 +5,18 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../../AuthProvider/AuthProvider";
 import { useDispatch } from "react-redux";
 import { togglePopup } from "../../../redux/Slices/PopupSlice";
+import { useAddToCartMutation } from "../../../redux/Api/Cart";
 
 
 const ProductSlider = () => {
   const { productId, variantId } = useParams();
-
+  const { user } = useAuth(); // Get current user data from context
+  const [addToCart] = useAddToCartMutation(); // Mutation hook from RTK Query
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentVariant, setCurrentVariant] = useState();
   const [images, setImages] = useState([]);
 
-  const disptach = useDispatch()
+  const dispatch = useDispatch()
 
 
   const handlePrev = () => {
@@ -54,7 +56,7 @@ const ProductSlider = () => {
       setCurrentSlide(0)
 
     }
-    console.log("Products:", products);
+
     if (products && products.variants.length > 0) {
       const matchingVariant = products.variants.find(
         (variant) => variant._id === currentVariant
@@ -73,6 +75,23 @@ const ProductSlider = () => {
   const Orderhanlder = () => {
     navigate(`/checkout/${productId}/${variantId}`)
   }
+
+
+
+  // const handleAddToCart = async () => {
+  //   if (!user) {
+  //     dispatch(togglePopup())
+  //     return; // Optionally show a login prompt or redirect
+  //   }
+
+  //   try {
+  //     // Call the addToCart mutation with userId and productId
+  //     const response = await addToCart({ userId: user._id, productId: products[0]?._id, variantId: currentVariant }).unwrap();
+  //     console.log("Product added to cart successfully", response);
+  //   } catch (error) {
+  //     console.error("Error adding product to cart", error);
+  //   }
+  // };
 
 
 
@@ -158,6 +177,7 @@ const ProductSlider = () => {
 
             <div className="flex gap-4 mt-6">
               <button
+                // onClick={handleAddToCart}
                 type="button"
                 className="w-full text-black border-2 border-black hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:border-gray-700 dark:text-white dark:hover:text-black dark:hover:bg-transparent dark:focus:ring-gray-700"
               >

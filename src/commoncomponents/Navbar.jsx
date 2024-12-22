@@ -3,17 +3,27 @@ import { BsCart2, BsPerson } from "react-icons/bs";
 import { IoIosMenu, IoIosSearch, IoIosClose } from 'react-icons/io';
 import { useNavigate, Link } from 'react-router-dom';
 import logo from "../assets/logo/logo.png";
+import { useDispatch } from 'react-redux';
+import { profilePopup } from '../redux/Slices/PopupSlice';
+import { useAuth } from '../AuthProvider/AuthProvider';
+
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const { user } = useAuth()
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   function openadminpanel() {
-    navigate("/login");
+    setIsMenuOpen(false);
+
+    dispatch(profilePopup())
+
   };
 
   useEffect(() => {
@@ -61,21 +71,31 @@ export default function Navbar() {
           >
             <div className={`flex flex-col lg:flex-row gap-7 text-base sm:text-lg ${isMenuOpen ? 'translate-x-0 mt-10' : '-translate-x-full lg:translate-x-0'}`}>
               {/* <Link to="/profile" className="hover:text-blue-500" onClick={() => setIsMenuOpen(false)} md-none>Profile</Link> */}
-              <Link to="/profile"
+              <p
                 className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white ' : 'text-black hidden'}`}
-                onClick={() => setIsMenuOpen(false)}>
+                onClick={() => openadminpanel()}>
                 Profile
-              </Link>
+              </p>
 
               <Link to="/" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Home</Link>
               <Link to="/new-arrivals" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>New Arrivals</Link>
               <Link to="/trending" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Trending</Link>
               <Link to="/Customized" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Customized</Link>
               <Link to="/upper-wear" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Upper Wear</Link>
-              <Link to="/bottom-wear" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}> Bottom Wear</Link>
-              <Link to="/store" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}> Store</Link>
+              <p
+                className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white ' : 'text-black hidden'}`}
+                onClick={() => navigate('/signup')} >
+                Sign Up
+              </p>
+              <p
+                className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white ' : 'text-black hidden'}`}
+                onClick={() => navigate('/login')}>
+                Log In
+              </p>
+              {/* <Link to="/bottom-wear" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}> Bottom Wear</Link>
+              <Link to="/store" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}> Store</Link> */}
 
-              {/* Add more links here as needed */}
+              {/* Add more lninks here as needed */}
             </div>
           </div>
 

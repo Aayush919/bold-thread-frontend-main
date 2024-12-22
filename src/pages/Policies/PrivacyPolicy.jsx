@@ -13,6 +13,8 @@ const PrivacyPolicy = () => {
                     At <strong>Bold-Thread Clothing</strong>, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your data when you visit our website or engage with us in any other way. By accessing or using our services, you agree to the practices described in this policy.
                 </p>
 
+
+
                 {/* Section 1 - Information We Collect */}
                 <section className="mb-8">
                     <h2 className="text-2xl font-semibold text-gray-700 mb-4">1. Information We Collect</h2>
@@ -141,12 +143,34 @@ const PrivacyPolicy = () => {
                         If you have any questions or concerns about this Privacy Policy or your personal data, please contact us:
                     </p>
                     <p className="text-gray-600 mb-4 leading-relaxed">
-                        Email: support@boldthread.com
+                        Email: support@bold-thread.com
                     </p>
                     <p className="text-gray-600 mb-4 leading-relaxed">
-                        Address: Bold-Thread Clothing, 123 Fashion Street, City, Country.
+                        Address: Shop No 20,Bagsewania,Near Vishwakrma Mandir,Bhopal (M.P),462043
+                    </p>
+
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                        Phone Number: (+91)9201634268.
                     </p>
                 </section>
+
+                {/* Section 11 - Contact Us */}
+                <section className="mb-8">
+                    <h2 className="text-2xl font-semibold text-gray-700 mb-4">11. Shipping and Delivery</h2>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                        Shipping costs will be calculated at checkout based on the delivery location and the size/weight of your order. We use third-party delivery services to fulfill our orders and aim to deliver products within 7 to 15 business days, depending on the location.
+                    </p>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                        Please ensure that the shipping address you provide is accurate. We are not responsible for any delays or undelivered orders caused by incorrect address information.
+                    </p>
+                </section>
+
+
+
+
+
+
+
             </div>
         </div>
     );

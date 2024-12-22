@@ -282,10 +282,10 @@ const TermsAndConditions = () => {
             For any questions or concerns regarding these Terms, please contact us at:
           </p>
           <address className="text-gray-700">
-            Bold-Thread <br />
-            Bhopal, MP Nagar, Madhya Pradesh, India <br />
+            Bold-Thread-Clothes <br />
+            Address: Shop No 20,Bagsewania,Near Vishwakrma Mandir,Bhopal (M.P),462043
             Email: <a href="mailto:support@bold-thread.com" className="text-blue-600">support@bold-thread.com</a><br />
-            Phone: <a href="tel:+91-XXXX-XXXX" className="text-blue-600">+91-XXXX-XXXX</a>
+            Phone: <a href="tel:+91-XXXX-XXXX" className="text-blue-600"> (+91) 9201634268</a>
           </address>
         </div>
       </div>
