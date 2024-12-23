@@ -11,7 +11,7 @@ function Trending() {
   return (
     <div>
       <Crouser />
-      <Categories />
+      {/* <Categories /> */}
       <PopularProducts />
     </div>
   )

@@ -18,7 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   return <>
     <Crouser />
-    <ProductCrouser />
+    {/* <ProductCrouser /> */}
     <div className='  xl:h-[430px] md:h-[200px]  rounded-sm flex justify-center  mt-20'>
       <img src={banner} className='w-full h-full' onClick={() => navigate('/Customized')} />
     </div>

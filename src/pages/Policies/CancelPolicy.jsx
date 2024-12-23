@@ -56,14 +56,14 @@ const CancelPolicy = () => {
                         <li><strong>Exchange Option:</strong> If you want a different size, color, or style, we can arrange for an exchange, subject to product availability.</li>
                         <li><strong>Return Shipping:</strong> If the return is due to a defective item or an error on our part, we will cover the return shipping cost. Otherwise, the return shipping will be at your expense.</li>
                     </ul>
-
+{/* 
                     <h3 className="text-xl font-medium text-gray-800 mt-6">Categories with Specific Return Policies</h3>
                     <div className="mt-4 text-gray-700">
                         <p><strong>Apparel (Clothing):</strong> Return within 7 days in unused, unwashed condition with tags intact.</p>
                         <p><strong>Accessories (Bags, Jewelry, etc.):</strong> Return within 7 days, unused, undamaged with original packaging.</p>
                         <p><strong>Sale and Discounted Items:</strong> Non-returnable unless defective, marked clearly during checkout.</p>
                         <p><strong>Items from Bold-Thread Bhopal Store:</strong> In-store purchases must be returned within 7 days directly at the store.</p>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
