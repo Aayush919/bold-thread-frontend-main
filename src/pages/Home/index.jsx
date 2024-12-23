@@ -26,7 +26,7 @@ const Home = () => {
     <NewArrivals />
     <AnimatedVideo />
     <Trending />
-    <OldProduct />
+    {/* <OldProduct /> */}
 
 
 

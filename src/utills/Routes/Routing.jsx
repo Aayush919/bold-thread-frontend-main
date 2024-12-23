@@ -9,13 +9,13 @@ import NewArrival from "../../pages/NewArrival";
 import Trending from "../../pages/Trending";
 import UpperWear from "../../pages/UpperWear";
 // import BottomWear from "../../pages/BottomWear";
-
 import Customized from "../../pages/Customized";
 import SignUp from "../../commoncomponents/SignUp";
 import PrivacyPolicy from "../../pages/Policies/PrivacyPolicy";
 import TermsAndConditions from "../../pages/Policies/TermsAndConditions";
 import CancelPolicy from "../../pages/Policies/CancelPolicy";
 import Login from "../../commoncomponents/Login";
+// import Cart from "../../pages/Cart";
 
 // import Customized from "../../pages/Customized";
 
@@ -36,6 +36,7 @@ function Routing() {
                 <Route path='/customized' element={<Customized />} />
                 <Route path='/terms' element={<TermsAndConditions />} />
                 <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+                {/* <Route path='/cart' element={<Cart/>}/> */}
                 <Route path='/return-cancellation' element={<CancelPolicy />} />
 
 

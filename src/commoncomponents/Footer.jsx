@@ -18,7 +18,7 @@ export default function Footer() {
               <li><Link to="/new-arrivals" className="hover:text-gray-300 transition-colors">New Arrival</Link></li>
               <li><Link to="/customized" className="hover:text-gray-300 transition-colors">Customized</Link></li>
               <li><Link to="/trending" className="hover:text-gray-300 transition-colors">Trending</Link></li>
-              <li><Link to="/upper-wear" className="hover:text-gray-300 transition-colors">Upper Wear</Link></li>
+              {/* <li><Link to="/upper-wear" className="hover:text-gray-300 transition-colors">Upper Wear</Link></li> */}
               {/* <li><Link to="/bottom-wear" className="hover:text-gray-300 transition-colors">Bottom Wear</Link></li>
               <li><Link to="/store" className="hover:text-gray-300 transition-colors">Store</Link></li> */}
             </ul>
