@@ -15,6 +15,8 @@ const ProductSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentVariant, setCurrentVariant] = useState();
   const [images, setImages] = useState([]);
+  const [size, setSize] = useState(""); // For size selection
+  const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch()
 
@@ -39,9 +41,13 @@ const ProductSlider = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${urls}/product/product/6750b1055224450eb43250d9`
+          `${urls}/product/product/${productId}`
         );
-        setProducts(response.data.data.data);
+        if (response && response.data) {
+
+          console.log(response.data.data.data, 'response data')
+          setProducts(response.data.data.data);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -52,8 +58,11 @@ const ProductSlider = () => {
 
   useEffect(() => {
     if (!currentVariant) {
+
       setCurrentVariant(variantId)
       setCurrentSlide(0)
+
+
 
     }
 
@@ -72,35 +81,51 @@ const ProductSlider = () => {
     setCurrentSlide(0)
   }
 
-  const Orderhanlder = () => {
-    navigate(`/checkout/${productId}/${variantId}`)
-  }
 
+
+
+  const OrderHandler = () => {
+    navigate(`/checkout/${productId}/${currentVariant}`, {
+      state: { size, price: products?.price, quantity },
+    });
+  };
 
 
   const handleAddToCart = async () => {
-    console.log(user,'user is here already')
+    console.log(user, 'user is here already')
     if (!user) {
       dispatch(togglePopup())
       return; // Optionally show a login prompt or redirect
     }
 
-   if(!products){
-    console.log('error to fetch product name')
-    return 
-   }
+    if (!products) {
+      console.log('error to fetch product name')
+      return
+    }
 
-    
+
 
     try {
       // Call the addToCart mutation with userId and productId
-      const response = await addToCart({ productId: products._id,}).unwrap();
+      const response = await addToCart({ productId: products._id, }).unwrap();
       console.log("Product added to cart successfully", response);
     } catch (error) {
       console.error("Error adding product to cart", error);
     }
   };
 
+
+
+
+  const clothingDetails = {
+
+    neckStyle: "Round Neck",
+    pattern: "Solid",
+    length: "Crop",
+    printPatternType: "Plain",
+    hood: "No Hood",
+    occasion: "Casual",
+  };
 
 
   return (
@@ -146,25 +171,30 @@ const ProductSlider = () => {
             <div className="flex items-center justify-between gap-6 mb-6">
               <div className="text">
                 <h2 className="font-manrope font-bold text-3xl text-gray-900 mb-2">
-                Uni-Sex off white hoodie
+                  {products?.name}
                 </h2>
-                <p className="text-base text-gray-500">Unisex hoodie 100% fabric cutton use</p>
+                <p className="text-base text-gray-500">{products?.description}</p>
               </div>
             </div>
 
             <div className="flex flex-col gap-3 mb-8">
               <div className="flex items-center">
                 <h5 className="font-manrope font-semibold text-2xl text-gray-900">
-                  Rs 1399.00
+                  <span className={`line-through ${products?.discount > 0 ? 'text-gray-500' : ''}`}>
+                    Rs {products?.price || "0.00"}
+                  </span>
                 </h5>
                 <span className="ml-3 font-semibold text-lg text-indigo-600">
-                  30% off
+                  {products?.discount > 0 ? `${products.discount}% off` : ""}
                 </span>
+              </div>
+              <div className="text-gray-600">
+                <p>Final Price:{products?.finalPrice}</p>
               </div>
             </div>
 
-            <p className="font-medium text-lg text-gray-900 mb-2">Color:off White</p>
-            {/* <div className="grid grid-cols-3 gap-3 mb-6 max-w-sm">
+            {products && products.variants.length > 0 && <p className="font-medium text-lg text-gray-900 mb-2">Color</p>}
+            <div className="grid grid-cols-3 gap-3 mb-6 max-w-sm">
               {products && products.variants.length > 0 &&
                 products.variants.map((variant, index) => (
                   <div key={variant._id} className="color-box group" onClick={() => handleVariantChange(variant._id)}>
@@ -181,11 +211,44 @@ const ProductSlider = () => {
                     </div>
                   </div>
                 ))}
-            </div> */}
+            </div>
+
+
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              {["S", "M", "L", "XL", "XXL"].map((sizeOption) => (
+                <div
+                  key={sizeOption}
+                  className={`size-box w-100px py-1 border-2 rounded-lg cursor-pointer ${size === sizeOption ? "bg-indigo-600 text-white" : "bg-white"
+                    }`}
+                  onClick={() => setSize(sizeOption)}
+                >
+                  <p className="text-center">{sizeOption}</p>
+                </div>
+              ))}
+            </div>
+
+
+            <div className="flex items-center gap-4 mb-6">
+              <button
+                className="text-xl text-gray-700"
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+              >
+                -
+              </button>
+              <span className="text-lg">{quantity}</span>
+              <button
+                className="text-xl text-gray-700"
+                onClick={() => setQuantity(quantity + 1)}
+              >
+                +
+              </button>
+            </div>
+
+
 
             <div className="flex gap-4 mt-6">
               <button
-           
+
                 type="button"
                 className="w-full text-black border-2 border-black hover:bg-transparent hover:border-black hover:text-black focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:border-gray-700 dark:text-white dark:hover:text-black dark:hover:bg-transparent dark:focus:ring-gray-700"
               >
@@ -194,11 +257,27 @@ const ProductSlider = () => {
               <button
                 type="button"
                 className="w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                onClick={() => Orderhanlder()}
+                onClick={() => OrderHandler()}
               >
                 Buy Now
               </button>
+
             </div>
+
+            <p className="text-gray-600 mb-6">Deliver in 7 days | Cash on Delivery Available | In stock</p>
+
+            {/* Seller Info */}
+            <p className="font-bold text-lg text-gray-900 mb-6">Seller: Bold-Thread</p>
+            <ul className="text-gray-600 mt-4">
+              <li>Sleeve Length: {clothingDetails.sleeveLength || "Long Sleeves"}</li>
+              <li>Neck Style: {clothingDetails.neckStyle || "Hood"}</li>
+              <li>Pattern: {clothingDetails.pattern || "Printed"}</li>
+              <li>Length: {clothingDetails.length || "Regular"}</li>
+              <li>Type: {clothingDetails.type || "Pullover"}</li>
+              <li>Print or Pattern Type: {clothingDetails.printPatternType || "Typography"}</li>
+              <li>Hood: {clothingDetails.hood || "Hooded"}</li>
+              <li>Occasion: {clothingDetails.occasion || "Casual"}</li>
+            </ul>
           </div>
         </div>
       </div>

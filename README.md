@@ -73,4 +73,7 @@
 //size or setup bro
 //add to cart filter search product details
 //images setup
+
+//admin panel features
+//care and materel resolve
 //footer all rights are reserved bro
