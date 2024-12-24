@@ -1,16 +1,25 @@
 import { useDispatch } from "react-redux";
 import { togglePopup } from "../redux/Slices/PopupSlice";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthProvider/AuthProvider";
 
 
 const OrderPopup = () => {
 
     const dispatch=useDispatch();
     const navigate=useNavigate();
+  
 
 const navigationHandler=()=>{
+
+ 
     dispatch(togglePopup())
     navigate('/signup')
+}
+
+const loginNavigationHandler=()=>{
+  dispatch(togglePopup())
+  navigate('/signup')
 }
   return (
     <div className="flex items-center justify-center h-screen">
@@ -34,7 +43,7 @@ const navigationHandler=()=>{
 
             {/* Buttons */}
             <div className="flex justify-between">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onClick={loginNavigationHandler}>
                 Log In
               </button>
               <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600" onClick={navigationHandler}>

@@ -81,7 +81,7 @@ export default function Navbar() {
               <Link to="/new-arrivals" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>New Arrivals</Link>
               <Link to="/trending" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Trending</Link>
               <Link to="/Customized" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Customized</Link>
-              <Link to="/upper-wear" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Upper Wear</Link>
+              {/* <Link to="/upper-wear" className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white' : 'text-black'}`} onClick={() => setIsMenuOpen(false)}>Upper Wear</Link> */}
               <p
                 className={`hover:text-blue-500 text-lg ${isMenuOpen ? 'text-white ' : 'text-black hidden'}`}
                 onClick={() => navigate('/signup')} >

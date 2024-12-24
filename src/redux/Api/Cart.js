@@ -4,7 +4,7 @@ export const cartApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     addToCart: builder.mutation({
       query: ({ userId, productId }) => ({
-        url: "/cart/cart/add",
+        url: "/cart/add",
         method: "POST",
         body: { userId, productId },
         credentials: "include",

@@ -52,18 +52,18 @@ const CancelPolicy = () => {
                     <h3 className="text-xl font-medium text-gray-800">General Return Conditions</h3>
                     <ul className="list-disc ml-6 mt-4 text-gray-700">
                         <li><strong>Return Timeframe:</strong> You have 7 days from the date of delivery to return your product. The product must be in its original, unused, and unwashed condition with all tags attached.</li>
-                        <li><strong>Refunds:</strong> Once we receive your returned item, it will be inspected. A full refund will be processed to the original payment method or store credit, depending on your preference.</li>
+                        <li><strong>Refunds:</strong> Once we receive your returned item, it will be inspected. A full refund will be processed to the original payment method , depending on your preference.</li>
                         <li><strong>Exchange Option:</strong> If you want a different size, color, or style, we can arrange for an exchange, subject to product availability.</li>
                         <li><strong>Return Shipping:</strong> If the return is due to a defective item or an error on our part, we will cover the return shipping cost. Otherwise, the return shipping will be at your expense.</li>
                     </ul>
-
+{/* 
                     <h3 className="text-xl font-medium text-gray-800 mt-6">Categories with Specific Return Policies</h3>
                     <div className="mt-4 text-gray-700">
                         <p><strong>Apparel (Clothing):</strong> Return within 7 days in unused, unwashed condition with tags intact.</p>
                         <p><strong>Accessories (Bags, Jewelry, etc.):</strong> Return within 7 days, unused, undamaged with original packaging.</p>
                         <p><strong>Sale and Discounted Items:</strong> Non-returnable unless defective, marked clearly during checkout.</p>
                         <p><strong>Items from Bold-Thread Bhopal Store:</strong> In-store purchases must be returned within 7 days directly at the store.</p>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
@@ -76,8 +76,8 @@ const CancelPolicy = () => {
                     <p className="text-gray-700 mt-4">Refunds will be made to the original payment method (Credit/Debit Card, Net Banking, UPI, etc.) </p>
 
                     <h3 className="text-xl font-medium text-gray-800 mt-6">Refund Timeline</h3>
-                    <p className="text-gray-700 mt-4">Refunds will complete  within 5-7 business days after the return is approved. Depending on your payment provider, the refund may take additional time to reflect in your account.</p>
-
+                    <p className="text-gray-700 mt-4">Refunds will be credited to the original payment method within 5-7 business days after the return is approved. Depending on your payment provider, the refund may take additional time to reflect in your account.</p>
+ 
                     <h3 className="text-xl font-medium text-gray-800 mt-6">Partial Refund</h3>
                     <p className="text-gray-700 mt-4">If the product is returned damaged, without tags, or with visible wear and tear, we may issue a partial refund after deductions for damages.</p>
                 </div>
