@@ -5,9 +5,10 @@ import blackhoodiefront from '../../assets/cutosmized/blackhoodie.jpg';
 import blackhoodieback from '../../assets/cutosmized/blackhoodies.avif';
 import redhoodiefront from '../../assets/cutosmized/redhoodies.jpg';
 import redhoodieback from '../../assets/cutosmized/redhoodieback.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetGraphicQuery, useGetImageQuery } from '../../redux/Api/Custmization';
 import { imgurl } from '../../config/urls';
+import axios from 'axios';
 
 
 
@@ -52,8 +53,25 @@ const Customized = () => {
 
 
   console.log(imageData)
+  const { txnId } = useParams();
 
 
+  useEffect(() => {
+    // Call the backend to check payment status
+    axios
+      .post(`https://bold-thread.com/api/status/${txnId}`)
+      .then((response) => {
+        // Handle success or failure response
+        if (response.data.success) {
+          // Show success message
+        } else {
+          // Show failure message
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking payment status", error);
+      });
+  }, [txnId]);
 
 
 

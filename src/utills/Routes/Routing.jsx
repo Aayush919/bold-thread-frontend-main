@@ -27,7 +27,7 @@ function Routing() {
 
                 <Route index element={<Home />} />
                 <Route path='/display/:productId/:variantId' element={<DisplayPage />} />
-                <Route path='/checkout/:productid/:variantId' element={<Checkout />} />
+                <Route path='/checkout' element={<Checkout />} />
                 <Route path='/new-arrivals' element={<NewArrival />} />
                 <Route path='/trending' element={<Trending />} />
                 <Route path='/upper-wear' element={<UpperWear />} />
@@ -37,6 +37,7 @@ function Routing() {
                 <Route path='/terms' element={<TermsAndConditions />} />
                 <Route path='/privacypolicy' element={<PrivacyPolicy />} />
                 <Route path='/return-cancellation' element={<CancelPolicy />} />
+                <Route path='/status/:txnId' element={<Customized />} />
 
 
 

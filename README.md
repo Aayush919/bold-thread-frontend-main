@@ -64,3 +64,13 @@
 //admin panel multiple select and also bro give the option to the backend changes also made ok done
 //display page or images and icons and privacy policy rechechek also bro and footer icons done
 //old sell product cursor
+//change the placeholder name
+//popup cards
+//f & q home to navigate
+//animated on graphic
+//buy now or save on cutimizations
+//center or img on center bro
+//size or setup bro
+//add to cart filter search product details
+//images setup
+//footer all rights are reserved bro
